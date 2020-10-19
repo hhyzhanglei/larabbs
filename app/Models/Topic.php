@@ -5,8 +5,7 @@ namespace App\Models;
 class Topic extends Model
 {
     protected $fillable = [
-        'title', 'body', 'user_id', 'category_id', 'reply_count',
-        'view_count', 'last_reply_user_id', 'order', 'excerpt', 'slug',
+        'title', 'body', 'category_id', 'excerpt', 'slug'
     ];
 
     public function category()
@@ -42,6 +41,14 @@ class Topic extends Model
     public function scopeRecent($query)
     {
         // 按照创建时间排序
-        return $query->orderBy('created_at', 'desc');
+        return $query->orderBy('created_at','desc');
     }
+    # 访问器
+    // public function getBodyAttribute(){
+    //     return $this->user_id.'-----------'.$this->category_id;
+    // }
+    # 修改器
+    // public function setBodyAttribute($value){
+    //     $this->attributes['body'] = ucfirst($value);
+    // }
 }
